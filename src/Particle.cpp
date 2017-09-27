@@ -12,17 +12,18 @@
 Particle::Particle()
 {
     offsetX = ofRandom(0,1000);
-    offsetY = ofRandom(0,1000);    
+    offsetY = ofRandom(0,1000);
+    
     
 }
 
 
-Particle::Particle(const glm::vec3& _position): position(_position)
+Particle::Particle(const glm::vec2& _position): position(_position)
 {
 }
 
 
-Particle::Particle(const glm::vec3& _position, const glm::vec3& _velocity):
+Particle::Particle(const glm::vec2& _position, const glm::vec2& _velocity):
     position(_position),
     velocity(_velocity)
 {
@@ -64,8 +65,7 @@ void Particle::update()
 void Particle::draw() const
 {
     ofSetColor(255, opacity);
-    ofDrawCircle(position, 0.1);
-    
+    ofDrawCircle(position, 0.3);
 }
 
 

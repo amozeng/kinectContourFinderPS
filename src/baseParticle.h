@@ -1,29 +1,25 @@
 #pragma once
 
+#include "ofTypes.h"
+#include "ofUtils.h"
 #include "ofMain.h"
 #include "stdio.h"
 
 
 
-/// \brief This class defines the basic properties of a simple 3D particle.
 class baseParticle
 {
 public:
-    /// \brief The default constructor for the BaseParticle.
     baseParticle();
-    
-    /// \brief The BaseParticle's draw method.
+
     virtual ~baseParticle();
     
-    /// \brief The BaseParticle's update method.
+    //virtual void reset();
     virtual void update();
+    virtual void draw() const;
     
-    /// \brief The BaseParticle's draw method.
-    virtual void draw();
-    
-    /// \brief This method calculates the age of the particle.
-    /// \returns The age of the particle in number of frames.
     uint64_t getAge();
+    
     
     /// \brief This represents the mass of the particle.
     ///
@@ -67,5 +63,7 @@ public:
     
     
     uint64_t maximumAge;
+
 };
+
 

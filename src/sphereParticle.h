@@ -1,6 +1,7 @@
 #pragma once
 
-#include "stdio.h"
+#include "ofTypes.h"
+#include "ofUtils.h"
 #include "ofMain.h"
 #include "baseParticle.h"
 
@@ -13,8 +14,8 @@ public:
     virtual void draw();
     ofImage lilyInSphereParticle;
     
-
-
+    
+    
     
 };
 
@@ -22,9 +23,5 @@ public:
 class cubeParticle: public baseParticle {
 public:
     virtual void draw();
-        
+    
 };
-
-
-
-

@@ -17,8 +17,8 @@ class Particle
 {
 public:
     Particle();
-    Particle(const glm::vec3& position);
-    Particle(const glm::vec3& position, const glm::vec3& velocity);
+    Particle(const glm::vec2& position);
+    Particle(const glm::vec2& position, const glm::vec2& velocity);
 
     virtual ~Particle();
 
@@ -30,10 +30,10 @@ public:
 
     bool dead = false;
     
-    glm::vec3 position;
-    glm::vec3 velocity;
-    glm::vec3 gravity;
-    glm::vec3 impulse;
+    glm::vec2 position;
+    glm::vec2 velocity;
+    glm::vec2 gravity;
+    glm::vec2 impulse;
     float drag = 1;
 
     uint64_t age = 0;
@@ -46,13 +46,11 @@ public:
     float offsetX;
     float offsetY;
     
-    glm::vec3 timeOffset;
+    glm::vec2 timeOffset;
     
     std::size_t time;
     std::size_t timeScale;
     std::size_t displacementScale;
-    
-    //CGImage lily;
     
     
 };

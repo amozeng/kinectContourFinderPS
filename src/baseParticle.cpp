@@ -1,5 +1,6 @@
-
 #include "baseParticle.h"
+
+
 
 baseParticle::baseParticle()
 {
@@ -12,15 +13,21 @@ baseParticle::baseParticle()
     color = ofColor(127);;
     createdFrameCount = ofGetFrameNum();
     
-    maximumAge = ofRandom(60*2, 60*5);
+    maximumAge = ofRandom(60*0.5, 60*1);
 }
+
+
 
 /// \brief The BaseParticle's draw method.
 baseParticle::~baseParticle()
 {
 }
 
-void baseParticle::update() {
+
+
+/// \brief The BaseParticle's update method.
+void baseParticle::update()
+{
     // Add the acceleration to the velocity.
     // Acceleration is the change in velocity over time.
     velocity += acceleration;
@@ -36,17 +43,42 @@ void baseParticle::update() {
     acceleration.set(0, 0, 0);
 }
 
-void baseParticle::draw() {
+/// \brief The BaseParticle's draw method.
+void baseParticle::draw() const
+{
     ofFill();
-    ofSetColor(color);
+//    ofSetColor(color);
+//    
+//    // Sphere radius ...
+//    float sphereRadius = (size.x + size.y + size.z) / 3.0 / 2.0;
+//    
+//    ofDrawCone(position, sphereRadius, sphereRadius);
+    float normalizedAge = ofMap(ofGetFrameNum() - createdFrameCount, 0, maximumAge, 1, 0);
+
+    ofSetColor(255, 153, 204, 30);
     
-    // Sphere radius ...
-    float sphereRadius = (size.x + size.y + size.z) / 3.0 / 2.0;
+    ofPushMatrix();
     
-    ofDrawSphere(position, sphereRadius);
+    ofTranslate(position);
+    float randomW = ofRandom(3,6);
+    float randomH = ofRandom(10,12);
+    float angle = position.angle(velocity);
+    ofPoint direction = position - velocity;
+    ofRotate(angle, direction.x, direction.y, direction.z);
+    
+    ofDrawPlane(0, 0, 0, randomW * normalizedAge, randomH * normalizedAge);
+    //ofDrawSphere(position, 10 * normalizedAge);
+    //lilyInSphereParticle.draw(position.x, position.y);
+    ofPopMatrix();
+
 }
 
+/// \brief This method calculates the age of the particle.
+/// \returns The age of the particle in number of frames.
 uint64_t baseParticle::getAge()
 {
     return ofGetFrameNum() - createdFrameCount;
 }
+    
+
+

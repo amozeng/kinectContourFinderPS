@@ -10,10 +10,10 @@ void sphereParticle::setup() {
 
 
 void sphereParticle::draw(){
-
+    
     ofFill();
     float normalizedAge = ofMap(getAge(), 0, maximumAge, 1, 0);
-
+    
     
     ofSetColor(255, 153, 204, 30);
     
@@ -25,12 +25,12 @@ void sphereParticle::draw(){
     float angle = position.angle(velocity);
     ofPoint direction = position - velocity;
     ofRotate(angle, direction.x, direction.y, direction.z);
-
+    
     ofDrawPlane(0, 0, 0, randomW * normalizedAge, randomH * normalizedAge);
     //ofDrawSphere(position, 10 * normalizedAge);
     //lilyInSphereParticle.draw(position.x, position.y);
     ofPopMatrix();
-
+    
 }
 
 void cubeParticle::draw() {
@@ -62,12 +62,12 @@ void cubeParticle::draw() {
     
     float randomW = ofRandom(3,6);
     float randomH = ofRandom(10,12);
-
     
-//    ofDrawCone(0, 0, 0, 40 * normalizedAge, 60 * normalizedAge);
+    
+    //    ofDrawCone(0, 0, 0, 40 * normalizedAge, 60 * normalizedAge);
     ofDrawPlane(0, 0, 0, randomW * normalizedAge, randomH * normalizedAge);
-
+    
     
     ofPopMatrix();
-
+    
 }
